@@ -33,6 +33,8 @@ Nathaniel McHugh
 
 ### Example
 
+`https://dvwa.capturetheflag.cz/vulnerabilities/fi/?page=../../hackable/uploads/xss.png`
+
 ```
 vavkamil@localhost:~/Documents/Python/xss2png$ hexdump -c xss.png 
 0000000 211   P   N   G  \r  \n 032  \n  \0  \0  \0  \r   I   H   D   R
