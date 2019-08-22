@@ -3,6 +3,8 @@ PNG IDAT chunks XSS payload generator
 
 A simple tool to generate PNG images with XSS payloads stored in PNG IDAT chunks
 
+*Huge thanks to Nathaniel McHugh for sharing his PHP source code with me*
+
 ### Usage
 
 ```
