@@ -1,5 +1,4 @@
 # xss2png
-PNG IDAT chunks XSS payload generator
 
 A simple tool to generate PNG images with XSS payloads stored in PNG IDAT chunks
 
