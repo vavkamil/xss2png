@@ -158,7 +158,7 @@ if __name__ == "__main__":
     banner()
     args = parse_args()
 
-    input2chunk = args.payload
+    input2chunk = (args.payload).upper()
     print("[i] Using payload: " + input2chunk + "\n")
 
     failed = True
