@@ -43,7 +43,7 @@ A simple tool to generate PNG images with XSS payloads stored in PNG IDAT chunks
 ````
 
 #### Damn Vulnerable Web App
-`https://dvwa.capturetheflag.cz/vulnerabilities/fi/?page=../../hackable/uploads/xss.png`
+`http://dvwa/vulnerabilities/fi/?page=../../hackable/uploads/xss.png`
 
 ```
 HTTP/1.1 200 OK
@@ -62,6 +62,8 @@ F�(�`��Q0
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 ```
+
+**Can be also useful for example with PHP payload on Hackerone CTF TempImage challenge**
 
 ### Credits
 
