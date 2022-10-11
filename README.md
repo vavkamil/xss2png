@@ -84,6 +84,8 @@ Nathaniel McHugh
 
 03-2016 [Revisiting XSS payloads in PNG IDAT chunks](https://www.adamlogue.com/revisiting-xss-payloads-in-png-idat-chunks/)
 
+10-2022 [Persistent PHP payloads in PNGs: How to inject PHP code in an image – and keep it there !](https://www.synacktiv.com/publications/persistent-php-payloads-in-pngs-how-to-inject-php-code-in-an-image-and-keep-it-there.html)
+
 ### Other tools
 
 [PNG-IDAT-chunks](https://github.com/vavkamil/old-repos-backup/tree/master/PNG-IDAT-chunks-master)
